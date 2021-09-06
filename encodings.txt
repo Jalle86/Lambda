@@ -1,0 +1,21 @@
+true    <- a => b => a;
+false   <- a => b => b;
+and     <- p => q => p q p;
+or      <- p => q => p p q;
+if      <- p => a => b => p a b;
+
++   <- m => n => s => z => m s (n s z);
+inc <- + 1;
+
+pred <- n => s => z => n (g => h => h (g s)) (u => z) (u => u);
+-    <- m => n => (n pred) m;
+
+0 <- s => z => z;
+1 <- inc 0;
+2 <- inc 1;
+3 <- inc 2;
+4 <- inc 3;
+
+is_zero <- n => n (x => false) true;
+<=      <- m => n => is_zero (- m n);
+=       <- m => n => and (<= m n) (<= n m);
